@@ -37,7 +37,7 @@ public class Homework1 extends DBTest {
          */
     void selectTheTrackAndAlbumAndArtistForAllTracksLongerThanSixMinutes() {
         List<Map<String, Object>> results = executeSQL(
-                "SELECT tracks.Name, tracks.Milliseconds,a2.Name,a.Title from tracks join albums a on a.AlbumId = tracks.AlbumId join artists a2 on a.ArtistId = a2.ArtistId where tracks.Milliseconds>360000");
+                " SELECT tracks.Name, tracks.Milliseconds,a2.Name,a.Title from tracks join albums a on a.AlbumId = tracks.AlbumId join artists a2 on a.ArtistId = a2.ArtistId where tracks.Milliseconds>360000");
 
         assertEquals(623, results.size());
 
