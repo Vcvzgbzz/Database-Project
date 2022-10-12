@@ -94,8 +94,31 @@ public class Album extends Model {
     }
 
     public static List<Album> getForArtist(Long artistId) {
-        // TODO implement
-        return Collections.emptyList();
+        // Need to return list of albumns based on artist ID
+        System.out.println(artistId);
+        List<Album> resultList;
+        artistId.intValue();
+        try (Connection conn = DB.connect();
+             //Cant use variables within statement itself use "stmt.setLong(1, artistId);" to pass variables
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * from albums where ArtistId = ?"
+             )) {
+
+            //Passing the variable artistId into the query
+            stmt.setLong(1, artistId);
+            ResultSet results = stmt.executeQuery();
+            resultList = new LinkedList<>();
+
+            while (results.next()) {
+                resultList.add(new Album(results));
+
+            }
+            return resultList;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+
+        //return Collections.emptyList();
     }
 
 }
