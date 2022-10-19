@@ -26,7 +26,25 @@ public class Playlist extends Model {
 
     public List<Track> getTracks(){
         // TODO implement, order by track name
-        return Collections.emptyList();
+
+        try (Connection conn = DB.connect();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM tracks ORDER BY Name"
+             )) {
+
+            //stmt.setInt(1, (page*100)-100);
+            ResultSet results = stmt.executeQuery();
+            List<Track> resultList = new LinkedList<>();
+            while (results.next()) {
+                resultList.add(new Track(results));
+            }
+            return resultList;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+
+
+
     }
 
     public Long getPlaylistId() {
@@ -50,6 +68,8 @@ public class Playlist extends Model {
              PreparedStatement stmt = conn.prepareStatement(
                      "SELECT * FROM playlists"
              )) {
+
+
             ResultSet results = stmt.executeQuery();
             List<Playlist> resultList = new LinkedList<>();
             while (results.next()) {
