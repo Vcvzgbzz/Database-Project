@@ -27,12 +27,13 @@ public class Playlist extends Model {
     public List<Track> getTracks(){
         // TODO implement, order by track name
 
+
         try (Connection conn = DB.connect();
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM tracks ORDER BY Name"
+                     "SELECT * FROM playlists join playlist_track on playlists.PlaylistId = playlist_track.PlaylistId JOIN tracks on tracks.trackId = playlist_track.trackId  ORDER BY tracks.Name"
              )) {
 
-            //stmt.setInt(1, (page*100)-100);
+
             ResultSet results = stmt.executeQuery();
             List<Track> resultList = new LinkedList<>();
             while (results.next()) {
@@ -45,6 +46,7 @@ public class Playlist extends Model {
 
 
 
+       // throw new UnsupportedOperationException("Needs to be implemented");
     }
 
     public Long getPlaylistId() {
@@ -66,9 +68,10 @@ public class Playlist extends Model {
     public static List<Playlist> all(int page, int count) {
         try (Connection conn = DB.connect();
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM playlists"
+                     "SELECT * FROM playlists LIMIT ? OFFSET?"
              )) {
-
+            stmt.setInt(1, count);
+            stmt.setInt(2, page*count-count);
 
             ResultSet results = stmt.executeQuery();
             List<Playlist> resultList = new LinkedList<>();
