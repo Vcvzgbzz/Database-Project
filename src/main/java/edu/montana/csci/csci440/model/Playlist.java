@@ -18,35 +18,30 @@ public class Playlist extends Model {
     public Playlist() {
     }
 
-    private Playlist(ResultSet results) throws SQLException {
+    Playlist(ResultSet results) throws SQLException {
         name = results.getString("Name");
         playlistId = results.getLong("PlaylistId");
     }
 
 
     public List<Track> getTracks(){
-        // TODO implement, order by track name
 
 
         try (Connection conn = DB.connect();
-             PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM playlists join playlist_track on playlists.PlaylistId = playlist_track.PlaylistId JOIN tracks on tracks.trackId = playlist_track.trackId  ORDER BY tracks.Name"
-             )) {
-
-
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM tracks JOIN playlist_track on playlist_track.TrackId=tracks.TrackId JOIN playlists on playlists.PlaylistId=playlist_track.PlaylistId WHERE playlists.PlaylistId=? ORDER By tracks.name")) {
+            stmt.setLong(1, this.getPlaylistId());
             ResultSet results = stmt.executeQuery();
-            List<Track> resultList = new LinkedList<>();
+            List<Track> resultList= new LinkedList<>();
             while (results.next()) {
                 resultList.add(new Track(results));
-            }
-            return resultList;
+            } return resultList;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         }
 
 
 
-       // throw new UnsupportedOperationException("Needs to be implemented");
+
     }
 
     public Long getPlaylistId() {

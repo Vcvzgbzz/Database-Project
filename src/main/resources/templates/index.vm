@@ -11,7 +11,7 @@
 <h4>Artists</h4>
 <ul>
     <li>All CRUD operations</li>
-    <li>Implement Paging</li>
+    <li>Implement Paging</li>invoices
     <li><code>Artist.verify()</code></li>
     <li>Show all albums on the artist details page, with links to their album</li>
 </ul>

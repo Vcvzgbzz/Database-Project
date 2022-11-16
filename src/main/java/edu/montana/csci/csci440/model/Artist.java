@@ -15,6 +15,8 @@ public class Artist extends Model {
 
     Long artistId;
     String name;
+    String name_version;
+
 
     public Artist() {
     }
@@ -22,6 +24,7 @@ public class Artist extends Model {
     private Artist(ResultSet results) throws SQLException {
         name = results.getString("Name");
         artistId = results.getLong("ArtistId");
+        name_version=name;
     }
 
     public List<Album> getAlbums(){
@@ -62,21 +65,34 @@ public class Artist extends Model {
 
 
     }
+    public void delete() {
+        try (Connection conn = DB.connect();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "DELETE FROM artists WHERE ArtistId=?")) {
+            stmt.setLong(1, this.getArtistId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+    }
     public boolean update() {
         if (verify()) {
             try (Connection conn = DB.connect();
                  PreparedStatement stmt = conn.prepareStatement(
-
-                         "UPDATE artists SET name=? WHERE artistId=?")) {
+                         "UPDATE artists SET Name=? WHERE ArtistId=? and NAME=?")) {
                 stmt.setString(1, this.getName());
                 stmt.setLong(2, this.getArtistId());
+                stmt.setString(3, name_version);
 
-                stmt.executeUpdate();
-                return true;
+                int updated_count = stmt.executeUpdate();
+                return updated_count>0;
             } catch (SQLException sqlException) {
                 throw new RuntimeException(sqlException);
             }
         } else {
+            //Failed OCC
             return false;
         }
     }
