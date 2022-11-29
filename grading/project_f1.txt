@@ -25,43 +25,28 @@
 [INFO] -------------------------------------------------------
 [INFO] Running edu.montana.csci.csci440.model.InvoicesTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.345 s - in edu.montana.csci.csci440.model.InvoicesTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.378 s - in edu.montana.csci.csci440.model.InvoicesTest
 [INFO] Running edu.montana.csci.csci440.model.TrackTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[ERROR] Tests run: 12, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.084 s <<< FAILURE! - in edu.montana.csci.csci440.model.TrackTest
+[ERROR] Tests run: 12, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.064 s <<< FAILURE! - in edu.montana.csci.csci440.model.TrackTest
 [ERROR] testAlbumNameIsStoredOnTrack  Time elapsed: 0 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <10> but was: <11>
 	at edu.montana.csci.csci440.model.TrackTest.testAlbumNameIsStoredOnTrack(TrackTest.java:96)
 
-[ERROR] testOrderByWorks  Time elapsed: 0.001 s  <<< FAILURE!
+[ERROR] testOrderByWorks  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <É Uma Partida De Futebol> but was: <For Those About To Rock (We Salute You)>
 	at edu.montana.csci.csci440.model.TrackTest.testOrderByWorks(TrackTest.java:102)
 
@@ -69,52 +54,37 @@ org.opentest4j.AssertionFailedError: expected: <É Uma Partida De Futebol> but w
 org.opentest4j.AssertionFailedError: expected: <33> but was: <34>
 	at edu.montana.csci.csci440.model.TrackTest.trackCountIsCachedInRedis(TrackTest.java:120)
 
-[ERROR] testArtistNameIsStoredOnTrack  Time elapsed: 0.005 s  <<< FAILURE!
+[ERROR] testArtistNameIsStoredOnTrack  Time elapsed: 0.003 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <40> but was: <42>
 	at edu.montana.csci.csci440.model.TrackTest.testArtistNameIsStoredOnTrack(TrackTest.java:87)
 
 [INFO] Running edu.montana.csci.csci440.model.PlaylistsTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s - in edu.montana.csci.csci440.model.PlaylistsTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in edu.montana.csci.csci440.model.PlaylistsTest
 [INFO] Running edu.montana.csci.csci440.model.AlbumTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in edu.montana.csci.csci440.model.AlbumTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in edu.montana.csci.csci440.model.AlbumTest
 [INFO] Running edu.montana.csci.csci440.model.EmployeeTest
 Resetting DB After Test...
-No redis found to reset
 null
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 [ERROR] Tests run: 7, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.021 s <<< FAILURE! - in edu.montana.csci.csci440.model.EmployeeTest
 [ERROR] testCreateWorks  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <edu.montana.csci.csci440.model.Employee@d1c82101> but was: <edu.montana.csci.csci440.model.Employee@5a8fd531>
 	at edu.montana.csci.csci440.model.EmployeeTest.testCreateWorks(EmployeeTest.java:46)
 
-[ERROR] testEmployeeHelperOnlyIssuesOneQuery  Time elapsed: 0.006 s  <<< FAILURE!
+[ERROR] testEmployeeHelperOnlyIssuesOneQuery  Time elapsed: 0.007 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at edu.montana.csci.csci440.model.EmployeeTest.testEmployeeHelperOnlyIssuesOneQuery(EmployeeTest.java:88)
 
@@ -124,26 +94,17 @@ java.lang.IndexOutOfBoundsException: Index: 0
 
 [INFO] Running edu.montana.csci.csci440.model.ArtistTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s - in edu.montana.csci.csci440.model.ArtistTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in edu.montana.csci.csci440.model.ArtistTest
 [INFO] Running edu.montana.csci.csci440.model.CustomerTest
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
 Resetting DB After Test...
-No redis found to reset
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in edu.montana.csci.csci440.model.CustomerTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in edu.montana.csci.csci440.model.CustomerTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -162,8 +123,8 @@ No redis found to reset
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  1.671 s
-[INFO] Finished at: 2022-11-29T08:07:26-07:00
+[INFO] Total time:  1.700 s
+[INFO] Finished at: 2022-11-29T09:42:41-07:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.1:test (default-test) on project CSCI_440_Project: There are test failures.
 [ERROR] 
