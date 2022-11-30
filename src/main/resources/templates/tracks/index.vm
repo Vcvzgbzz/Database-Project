@@ -15,13 +15,13 @@
 <table>
     <thead>
     <tr>
-        <th>Track ID</th>
-        <th>Name</th>
-        <th>Album</th>
-        <th>ArtistName</th>
+        <th><a href="?o=TrackId">Track_ID</a></th>
+        <th><a href="?o=Name">Name</a></th>
+        <th><a href="?o=AlbumId">Album</a></th>
+        <th><a href="?o=Composer">ArtistName</a></th>
         <th><a href="?o=Milliseconds">Milliseconds</a></th>
         <th><a href="?o=Bytes">Bytes</a></th>
-        <th>UnitPrice</th>
+        <th><a href="?o=UnitPrice">UnitPrice</a></th>
     </tr>
     </thead>
     <tbody>

@@ -22,6 +22,8 @@
         <td>Email</td>
         <td>$!customer.email</td>
     </tr>
+
+
     <tr>
         <td>Rep</td>
         <td><a href="/employees/$!customer.SupportRepId">$!customer.SupportRep.Email</a> </td>

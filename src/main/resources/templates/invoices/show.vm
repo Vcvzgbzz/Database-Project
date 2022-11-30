@@ -43,6 +43,8 @@
     <tr>
         <th>InvoiceLineId</th>
         <th>TrackId</th>
+        <th>Track Name</th>
+        <th>Track Album</th>
         <th>UnitPrice</th>
         <th>Quantity</th>
     </tr>
@@ -52,6 +54,8 @@
         <tr>
             <td>$!item.InvoiceLineId</td>
             <td>$!item.TrackId</td>
+            <td>$!item.Track.Name</td>
+            <td>$!item.Track.AlbumTitle</td>
             <td>$!item.UnitPrice</td>
             <td>$!item.Quantity</td>
         </tr>

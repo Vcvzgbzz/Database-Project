@@ -19,7 +19,7 @@ public class TracksController {
 
         post("/tracks/new", (req, resp) -> {
             Track track = new Track();
-            Web.putValuesInto(track, "Name", "Milliseconds", "Bytes", "UnitPrice");
+            Web.putValuesInto(track, "Name","AlbumId", "Milliseconds", "Bytes", "UnitPrice");
             if (track.create()) {
                 Web.message("Created A Track!");
                 return Web.redirect("/tracks/" + track.getTrackId());

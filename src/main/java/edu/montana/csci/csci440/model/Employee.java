@@ -31,8 +31,16 @@ public class Employee extends Model {
     }
 
     public static List<Employee.SalesSummary> getSalesSummaries() {
-        //TODO - a GROUP BY query to determine the sales (look at the invoices table), using the SalesSummary class
-        return Collections.emptyList();
+        try (Connection conn = DB.connect();
+             PreparedStatement stmt = conn.prepareStatement("SELECT employees.FirstName,employees.LastName,employees.Email, COUNT(Total) AS SalesCount, Sum(Total) AS SalesTotal FROM employees JOIN customers on customers.SupportRepId=employees.EmployeeId JOIN invoices on invoices.CustomerId=customers.CustomerId GROUP BY EmployeeId")) {
+            ResultSet results = stmt.executeQuery();
+            List<Employee.SalesSummary> resultList= new LinkedList<>();
+            while (results.next()) {
+                resultList.add(new Employee.SalesSummary(results));
+            } return resultList;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
     }
 
     @Override
@@ -177,22 +185,7 @@ public class Employee extends Model {
         }
     }
     public Employee getBoss() {
-        System.out.println(reportsTo);
-        if(reportsTo==null){
-            reportsTo=Long.parseLong("1");
-        }
-        try (Connection conn = DB.connect();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employees WHERE ReportsTo=?")) {
-            stmt.setLong(1, reportsTo);
-            ResultSet results = stmt.executeQuery();
-            if (results.next()) {
-                return new Employee(results);
-            } else {
-                return null;
-            }
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
-        }
+        return Employee.find(this.getReportsTo());
 
     }
 
@@ -256,7 +249,7 @@ public class Employee extends Model {
     }
 
     public void setReportsTo(Employee employee) {
-        // TODO implement
+        reportsTo = employee.employeeId;
     }
 
     public static class SalesSummary {
