@@ -30,9 +30,36 @@
     </tr>
     </tbody>
 </table>
+<h2>Invoices</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Invoice ID</th>
+        <th>Billing Address</th>
+        <th>Billing City</th>
+        <th>Billing State</th>
+        <th>Billing Country</th>
+        <th>Billing Postal Code</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach( $Invoice in $customer.getInvoices())
+        <tr>
+            <td><a href="/invoices/$Invoice.InvoiceId">$Invoice.InvoiceId</a></td>
+            <td>$!Invoice.BillingAddress</td>
+            <td>$!Invoice.BillingCity</td>
+            <td>$!Invoice.BillingState</td>
+            <td>$!Invoice.BillingCountry</td>
+            <td>$!Invoice.BillingPostalCode</td>
+            <td>$!Invoice.Total</td>
+        </tr>
+        #end
+
+    </tbody>
+</table>
 
 <a href="/customers/$customer.CustomerId/edit">[Edit Customer]</a>
 <a href="/customers/$customer.CustomerId/delete">[Delete Customer]</a>
-
 
 #parse('templates/footer.vm')

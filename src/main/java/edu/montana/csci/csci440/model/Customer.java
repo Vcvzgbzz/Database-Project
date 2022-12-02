@@ -23,7 +23,20 @@ public class Customer extends Model {
     }
 
     public List<Invoice> getInvoices(){
-        return Collections.emptyList();
+        try (Connection conn = DB.connect();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM invoices where CustomerId=?"
+             )) {
+            stmt.setLong(1, customerId);
+            ResultSet results = stmt.executeQuery();
+            List<Invoice> resultList = new LinkedList<>();
+            while (results.next()) {
+                resultList.add(new Invoice(results));
+            }
+            return resultList;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
     }
 
     private Customer(ResultSet results) throws SQLException {

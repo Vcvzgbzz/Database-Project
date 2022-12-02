@@ -32,7 +32,7 @@ public class Employee extends Model {
 
     public static List<Employee.SalesSummary> getSalesSummaries() {
         try (Connection conn = DB.connect();
-             PreparedStatement stmt = conn.prepareStatement("SELECT employees.FirstName,employees.LastName,employees.Email, COUNT(Total) AS SalesCount, Sum(Total) AS SalesTotal FROM employees JOIN customers on customers.SupportRepId=employees.EmployeeId JOIN invoices on invoices.CustomerId=customers.CustomerId GROUP BY EmployeeId")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT employees.FirstName,employees.LastName,employees.Email, COUNT(Total) AS SalesCount, Round(Sum(Total),2) AS SalesTotal FROM employees JOIN customers on customers.SupportRepId=employees.EmployeeId JOIN invoices on invoices.CustomerId=customers.CustomerId GROUP BY EmployeeId")) {
             ResultSet results = stmt.executeQuery();
             List<Employee.SalesSummary> resultList= new LinkedList<>();
             while (results.next()) {

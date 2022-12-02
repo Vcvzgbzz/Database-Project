@@ -27,31 +27,7 @@
     </tbody>
 
 </table>
-<table>
-    <thead>
-    <tr>
-        <th>Customer ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
 
-
-    </tr>
-    </thead>
-    <tbody>
-        #foreach( $customer in $customers )
-        <tr>
-            <td><a href="/customers/$customer.CustomerId">$customer.CustomerId</a></td>
-            <td>$!customer.FirstName</td>
-            <td>$!customer.LastName</td>
-            <td>$!customer.Email</td>
-
-        </tr>
-
-        #end
-    </tbody>
-
-</table>
 
 $web.pagingWidget($customers)
 

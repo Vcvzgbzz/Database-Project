@@ -10,6 +10,7 @@ import java.util.LinkedList;
 public class EmployeeHelper {
     static Map<Long, List<Employee>> employeeMap = new HashMap<>();
     public static String makeEmployeeTree() {
+        employeeMap.clear();
         List<Employee> employee = Employee.all(); // root employee
         // and use this data structure to maintain reference information needed to build the tree structure
         for(Employee emp: employee){
@@ -24,7 +25,7 @@ public class EmployeeHelper {
         return "<ul>" + makeTree(employee.get(0), employeeMap) + "</ul>";
     }
     public static String makeTree(Employee employee, Map<Long, List<Employee>> employeeMap) {
-        String list = "<li><a href='/employees" + employee.getEmployeeId() + "'>"
+        String list = "<li><a href='/employees/" + employee.getEmployeeId() + "'>"
                 + employee.getEmail() + "</a><ul>";
         List<Employee> reports = employeeMap.get(employee.getEmployeeId());
 
