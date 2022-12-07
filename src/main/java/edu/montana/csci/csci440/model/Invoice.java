@@ -31,6 +31,7 @@ public class Invoice extends Model {
         total = results.getBigDecimal("Total");
         invoiceId = results.getLong("InvoiceId");
         billingCity = results.getString("BillingCity");
+
     }
 
     public List<InvoiceItem> getInvoiceItems(){

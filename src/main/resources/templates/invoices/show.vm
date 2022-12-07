@@ -43,6 +43,7 @@
     <tr>
         <th>InvoiceLineId</th>
         <th>TrackId</th>
+        <th>Artists Name</th>
         <th>Track Name</th>
         <th>Track Album</th>
         <th>UnitPrice</th>
@@ -54,10 +55,12 @@
         <tr>
             <td>$!item.InvoiceLineId</td>
             <td>$!item.TrackId</td>
+            <td>$!item.Track.getAlbum().getArtist().getName()</td>
             <td>$!item.Track.Name</td>
             <td>$!item.Track.AlbumTitle</td>
             <td>$!item.UnitPrice</td>
             <td>$!item.Quantity</td>
+
         </tr>
         #end
         $web.pagingWidget($invoice.InvoiceItems)

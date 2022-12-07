@@ -16,12 +16,16 @@ public class InvoiceItem extends Model {
     BigDecimal unitPrice;
     Long quantity;
 
+    String artistName;
+
     public InvoiceItem(ResultSet results) throws SQLException {
         invoiceLineId = results.getLong("InvoiceLineId");
         invoiceId = results.getLong("InvoiceId");
         trackId = results.getLong("TrackId");
         unitPrice = results.getBigDecimal("UnitPrice");
         quantity = results.getLong("Quantity");
+        artistName=getTrack().getArtistName();
+        System.out.println(artistName);
     }
 
 
@@ -41,7 +45,18 @@ public class InvoiceItem extends Model {
         }
     }
     public Invoice getInvoice() {
-        return null;
+        try (Connection conn = DB.connect();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM invoices WHERE invoiceId=?")) {
+            stmt.setLong(1, invoiceId);
+            ResultSet results = stmt.executeQuery();
+            if (results.next()) {
+                return new Invoice(results);
+            } else {
+                return null;
+            }
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
     }
 
     public Long getInvoiceLineId() {
